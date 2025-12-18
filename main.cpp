@@ -83,7 +83,6 @@ int main()
     string nom;
     int index;
     float Best;
-    float note;
     const char* RED   = "\033[31m";
     const char* GREEN = "\033[32m";
     const char* YELLOW  = "\033[33m";
