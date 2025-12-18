@@ -1,18 +1,28 @@
 #include <iostream>
 #include <windows.h>
+#include <clocale>
 using namespace std;
 
-int serchElv(string tabElv [30], string nom){
-    int o = 0;
-    for(int Elv = 0; Elv < 30; Elv++){
-        if (nom == tabElv [Elv]) {
-            o = Elv + 1;
+    const char* RED   = "\033[31m";
+    const char* GREEN = "\033[32m";
+    const char* YELLOW  = "\033[33m";
+    const char* LIGHTBLUE  = "\033[34m";
+    const char* PURPLE  = "\033[35m";
+    const char* BLUE  = "\033[36m";
+    const char* RESET = "\033[0m";
+
+void serchElv(string tabElv[30], float tabNote[30], const string &nom, int &index, float &note)
+{
+    index = 0; 
+    for(int i = 0; i < 30; ++i) {
+        if (nom == tabElv[i]) {
+            index = i + 1;   
+            note  = tabNote[i];
+            return;          
         }
     }
-    if(o == 0){
-        o = 1;
-    }
-    return o;
+
+    note = 0;
 }
 void bestNote(float tabNote[30], float &Best, int &index){
     Best = tabNote[0];
@@ -25,11 +35,13 @@ void bestNote(float tabNote[30], float &Best, int &index){
 
 void liste(string tabElv[30])
 {
-    cout << endl;
+    cout << BLUE << endl;
+    int nb = 0;
     int j = 0;
     for(int i=0; i<30; i++)
     {
         cout << tabElv[i];
+        nb++;
         if(tabElv[(i+1)] == ""){
         }else{
             cout << ", ";
@@ -40,6 +52,7 @@ void liste(string tabElv[30])
         }
         j++;
     }
+    cout << "\nIl y a " << RED << nb << BLUE << " élèves dans la classe !"<< RESET;
 }
 
 float moyenne(float tabNote[30])
@@ -60,39 +73,38 @@ void AddStudent(string TabStudent[30], float TabNotation[30])
         if(TabStudent[i] == "")
         {
             string StudentName;
-            cout << "Entrez le nom de l'élève : ";
+            cout << BLUE << "Entrez le nom de l'élève : " << RED;
             cin >> StudentName;
             TabStudent[i] = StudentName;
             index = i;
             break;
         }
     }
-    cout << "Entrez sa note : ";
+    cout << BLUE << "Entrez sa note : " << RED;
     cin >> TabNotation[index];
+    cout << RESET;
 }
 
 int main()
 {
+    SetConsoleCP(CP_UTF8);          
+    setlocale(LC_ALL, ".UTF8");
     SetConsoleOutputCP(CP_UTF8);
     string tabElv[30] = {"Élie","Emma","", "Léa","Hugo","Célian","Thomas","Manon","Louis","Camille","Noah","Chloé","Enzo","Sarah"
                          "Paul","Inès","Arthur","Zoé","Adam","Juliette","Maxime","Lina","Gabriel","Eva","Matthieu","William","Raphaël","Nora","Antoine","Mila"};
-    float tabNote[30] = {12, 15, 8, 17, 10, 14, 6, 18, 9, 16, 11, 13, 7, 19, 5, 20, 4, 18.5, 9.5, 14.5, 10.5, 12.5, 16.5, 6.5, 3, 2, 1, 17.5, 8.5, 11.5};
+    float tabNote[30] = {12, 15, 8, 17.3, 10, 17.11, 6, 18, 9, 16, 11, 13, 7, 19, 5, 20, 4, 18.5, 9.5, 14.5, 10.5, 12.5, 16.5, 6.5, 3, 2, 1, 17.5, 8.5, 11.5};
     char choix;
     bool exit = false;
     float res;
     string nom;
     int index;
     float Best;
-    const char* RED   = "\033[31m";
-    const char* GREEN = "\033[32m";
-    const char* YELLOW  = "\033[33m";
-    const char* BLUE  = "\033[34m";
-    const char* RESET = "\033[0m";
+    float note;
     
     cout << GREEN << "Bienvenu sur votre gestionaire de classe 👽" << RESET;
     while(exit == false){
         cout << GREEN << "\n\nQuelle opération souhaitez-vous réaliser ?\n\n" << RESET;
-        cout << BLUE << ".1 Ajouter un Étudiant\n";
+        cout << LIGHTBLUE  << ".1 Ajouter un Étudiant\n";
         cout <<".2 Afficher la liste complète des éleves\n";
         cout <<".3 Afficher la moyenne de la classe\n";
         cout <<".4 Chercher un éleve par son nom\n";
@@ -109,17 +121,21 @@ int main()
                 break;
             case '3':
                 res = moyenne(tabNote);
-                cout << "\nLa moyenne de la classe est à " << res << "/20 \n\n";
+                cout << BLUE << "\nLa moyenne de la classe est à " << RED << res << BLUE << "/20 \n\n" << RESET;
                 break;
             case '4':
-                cout << "\nEntrez le nom d'un éleve pour obtenir son numéro : ";
+                cout << BLUE << "\nEntrez le nom d'un éleve pour obtenir son numéro : " << RED;
                 cin >> nom;
-                index = serchElv(tabElv, nom);
-                cout << "\nLe numéro de cet éleve est " << index << endl;
+                serchElv(tabElv, tabNote, nom, index, note);
+                if (index == 0) {
+                    cout << BLUE << "\nÉlève introuvable.\n";
+                } else {
+                    cout << BLUE << "\nLe numéro de cet éleve est " << RED << index << BLUE << " et sa note est " << RED << note << BLUE << "/20\n" << RESET;
+                }
                 break;
             case '5':
                 bestNote(tabNote, Best, index);
-                cout << "\nLa meilleure note c'est " << Best << "/20\n";
+                cout << BLUE << "\nLa meilleure note c'est " << RED << Best << BLUE << "/20\n" << RESET;
                 break;
             case '6':
                 exit = true;
