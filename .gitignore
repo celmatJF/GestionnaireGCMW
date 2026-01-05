@@ -3,3 +3,5 @@
 .vscode/settings.json
 build/Debug/main.o
 .vscode/tasks.json
+Code/build/Debug/main.o
+Code/build/Debug/outDebug.exe
