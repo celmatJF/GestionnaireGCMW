@@ -2,15 +2,9 @@
 #include <windows.h>
 #include <clocale>
 #include "fonctions.h"
+#include "colors.h"
 using namespace std;
 
-    const char* RED   = "\033[31m";
-    const char* GREEN = "\033[32m";
-    const char* YELLOW  = "\033[33m";
-    const char* LIGHTBLUE  = "\033[34m";
-    const char* PURPLE  = "\033[35m";
-    const char* BLUE  = "\033[36m";
-    const char* RESET = "\033[0m";
 
 void serchElv(string tabElv[30], float tabNote[30], const string &nom, int &index, float &note)
 {
