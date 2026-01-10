@@ -30,11 +30,11 @@ int main()
         cout << LIGHTBLUE  << ".1 Ajouter un Étudiant\n";
         cout <<".2 Afficher la liste complète des éleves\n";
         cout <<".3 Afficher la moyenne de la classe\n";
-        cout <<".4 Chercher un éleve par son nom\n";
+        cout <<".4 Chercher un éleve par son nom ou son numéro\n";
         cout <<".5 Afficher la meilleure note\n";
         cout <<".6 Quitter\n" << RESET;
-        cin >> choix;
 
+        cin >> choix;
         switch(choix){
             case '1':
                 AddStudent(tabElv, tabNote);
@@ -47,18 +47,34 @@ int main()
                 cout << BLUE << "\nLa moyenne de la classe est à " << RED << res << BLUE << "/20 \n\n" << RESET;
                 break;
             case '4':
-                cout << BLUE << "\nEntrez le nom d'un éleve pour obtenir son numéro : " << RED;
+                nom = "";
+                cout << "\nEntrez le nom ou le numéro d'un éleve : ";
                 cin >> nom;
-                serchElv(tabElv, tabNote, nom, index, note);
-                if (index == 0) {
-                    cout << BLUE << "\nÉlève introuvable.\n";
-                } else {
-                    cout << BLUE << "\nLe numéro de cet éleve est " << RED << index;
-                    cout << BLUE << " et sa note est " << RED << note << BLUE << "/20\n" << RESET;
+                try {
+                    index = stoi(nom);
+                    searchElv(tabElv, tabNote, nom, index, note);
+                    if (index == 0) {
+                    cout << "\nÉlève introuvable.\n";
+                    } else {
+                    cout << "\nLe nom de cet éleve est " << nom;
+                    cout << " et sa note est " << note << "/20\n";
+                    }
                 }
+                catch(const invalid_argument&){
+                    index = 0;
+                    searchElv(tabElv, tabNote, nom, index, note);
+                    if (index == 0) {
+                    cout << "\nÉlève introuvable.\n";
+                    } else {
+                    cout << "\nLe numéro de cet éleve est " << index;
+                    cout << " et sa note est " << note << "/20\n";
+                    }
+                }
+                index = 0;
+                note = 0;
                 break;
             case '5':
-                bestNote(tabNote, Best, index);
+                Best  = bestNote(tabNote);
                 cout << BLUE << "\nLa meilleure note c'est " << RED << Best << BLUE << "/20\n" << RESET;
                 break;
             case '6':
