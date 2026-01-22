@@ -6,30 +6,6 @@
 #include <string>
 using namespace std;
 
-
-void AddStudent(string tabElv[30], float tabNote[30])
-{ /*Rôle   : Ajouter un éleve au tableau.
-    Entrée : Nombre réel tabNote(tableau de 30 indices),
-    chaine de cractères tabElv(tableau de 30 indices).
-    Sortie : cout */
-    int index;
-    for(int i(0); i < 30; i++)
-    {    
-        if(tabElv[i] == "")
-        {
-            string StudentName;
-            cout << BLUE << "Entrez le nom de l'élève : " << RED;
-            cin >> StudentName;
-            tabElv[i] = StudentName;
-            index = i;
-            break;
-        }
-    }
-    cout << BLUE << "Entrez sa note : " << RED;
-    cin >> tabElv[index];
-    cout << RESET;
-}
-
 void liste(string tabElv[30])
 { /*Rôle   : Liste tous les éleves et donne le nombre le nombre d'éleves dans la classe.
     Entrée : Chaine de caractères tabElv(tableau de 30 indices).
@@ -40,12 +16,13 @@ void liste(string tabElv[30])
     for(int i = 0; i < 30; i++)
     {
         cout << tabElv[i];
-        nb++;
-        if(tabElv[i + 1] == ""){
-        }else{
+        if(tabElv[i + 1] != "")
+        {
             cout << ", ";
+            nb++;
         }
-        if(j == 5){
+        if(j == 5)
+        {
             cout << endl;
             j = 0;
         }

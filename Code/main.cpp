@@ -1,21 +1,19 @@
 #include <iostream>
 #include <windows.h>
 #include "fonctions.h"
+#include "AddStudent.h"
 #include <clocale>
 #include "colors.h"
 using namespace std;
-
-   
-
 
 int main()
 {
     SetConsoleCP(CP_UTF8);          
     setlocale(LC_ALL, ".UTF8");
     SetConsoleOutputCP(CP_UTF8);
-    string tabElv[30] = {"Élie","Emma","", "Léa","Hugo","Célian","Thomas","Manon","Louis","Camille","Noah","Chloé","Enzo","Sarah"
-                         "Paul","Inès","Arthur","Zoé","Adam","Juliette","Maxime","Lina","Gabriel","Eva","Matthieu","William","Raphaël","Nora","Antoine","Mila"};
-    float tabNote[30] = {12, 15, 8, 17.3, 10, 17.11, 6, 18, 9, 16, 11, 13, 7, 19, 5, 20, 4, 18.5, 9.5, 14.5, 10.5, 12.5, 16.5, 6.5, 3, 2, 1, 17.5, 8.5, 11.5};
+    string tabElv[30] = {"Élie","Emma","Léa","Hugo","Célian","Thomas","Manon","Louis","Camille","Noah","Chloé","Enzo","Sarah"
+                         "Paul","Inès","Arthur","Zoé","Adam","Juliette","Maxime","Lina"};
+    float tabNote[30] = {12, 15, 8, 17.3, 10, 17.11, 6, 18, 9, 16, 11, 13, 7, 19, 5, 20, 4, 18.5, 9.5, 14.5};
     char choix;
     bool exit = false;
     float res;
