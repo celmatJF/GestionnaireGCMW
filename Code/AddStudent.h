@@ -1,4 +1,6 @@
 #include <string>
+#include <fstream>
+#include "struct.hpp"
 using namespace std;
 
-void AddStudent(string TabStudent[30], float TabNotation[30]);
+void AddStudent(eleve tab[30]);
