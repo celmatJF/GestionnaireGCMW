@@ -5,24 +5,25 @@
 #include "colors.h"
 using namespace std;
 
-   
 
+struct variable{
+    char choix;
+    bool exit = false;
+    float res;
+    int index;
+    float Best;
+    string nom;
+    float note;
+};
 
 int main()
 {
     SetConsoleCP(CP_UTF8);          
     setlocale(LC_ALL, ".UTF8");
     SetConsoleOutputCP(CP_UTF8);
-    string tabElv[30] = {"Élie","Emma","", "Léa","Hugo","Célian","Thomas","Manon","Louis","Camille","Noah","Chloé","Enzo","Sarah"
-                         "Paul","Inès","Arthur","Zoé","Adam","Juliette","Maxime","Lina","Gabriel","Eva","Matthieu","William","Raphaël","Nora","Antoine","Mila"};
-    float tabNote[30] = {12, 15, 8, 17.3, 10, 17.11, 6, 18, 9, 16, 11, 13, 7, 19, 5, 20, 4, 18.5, 9.5, 14.5, 10.5, 12.5, 16.5, 6.5, 3, 2, 1, 17.5, 8.5, 11.5};
-    char choix;
-    bool exit = false;
-    float res;
-    string nom;
-    int index;
-    float Best;
-    float note;
+    eleve tab[30];
+    
+    variable v;
     
     cout << GREEN << "Bienvenu sur votre gestionaire de classe 👽" << RESET;
     while(exit == false){
@@ -34,51 +35,51 @@ int main()
         cout <<".5 Afficher la meilleure note\n";
         cout <<".6 Quitter\n" << RESET;
 
-        cin >> choix;
-        switch(choix){
+        cin >> v.choix;
+        switch(v.choix){
             case '1':
-                AddStudent(tabElv, tabNote);
+                //AddStudent(tab);
                 break;
             case '2':
-                liste(tabElv);
+                liste(tab);
                 break;
             case '3':
-                res = moyenne(tabNote);
-                cout << BLUE << "\nLa moyenne de la classe est à " << RED << res << BLUE << "/20 \n\n" << RESET;
+                v.res = moyenne(tab);
+                cout << BLUE << "\nLa moyenne de la classe est à " << RED << v.res << BLUE << "/20 \n\n" << RESET;
                 break;
             case '4':
-                nom = "";
+                v.nom = "";
                 cout << "\nEntrez le nom ou le numéro d'un éleve : ";
-                cin >> nom;
+                cin >> v.nom;
                 try {
-                    index = stoi(nom);
-                    searchElv(tabElv, tabNote, nom, index, note);
-                    if (index == 0) {
+                    v.index = stoi(v.nom);
+                    searchElv(tab, v.nom, v.index, v.note);
+                    if (v.index == 0) {
                     cout << "\nÉlève introuvable.\n";
                     } else {
-                    cout << "\nLe nom de cet éleve est " << nom;
-                    cout << " et sa note est " << note << "/20\n";
+                    cout << "\nLe nom de cet éleve est " << v.nom;
+                    cout << " et sa note est " << v.note << "/20\n";
                     }
                 }
                 catch(const invalid_argument&){
-                    index = 0;
-                    searchElv(tabElv, tabNote, nom, index, note);
-                    if (index == 0) {
+                    v.index = 0;
+                    searchElv(tab, v.nom, v.index, v.note);
+                    if (v.index == 0) {
                     cout << "\nÉlève introuvable.\n";
                     } else {
-                    cout << "\nLe numéro de cet éleve est " << index;
-                    cout << " et sa note est " << note << "/20\n";
+                    cout << "\nLe numéro de cet éleve est " << v.index;
+                    cout << " et sa note est " << v.note << "/20\n";
                     }
                 }
-                index = 0;
-                note = 0;
+                v.index = 0;
+                v.note = 0;
                 break;
             case '5':
-                Best  = bestNote(tabNote);
-                cout << BLUE << "\nLa meilleure note c'est " << RED << Best << BLUE << "/20\n" << RESET;
+                v.Best  = bestNote(tab);
+                cout << BLUE << "\nLa meilleure note c'est " << RED << v.Best << BLUE << "/20\n" << RESET;
                 break;
             case '6':
-                exit = true;
+                v.exit = true;
                 cout << YELLOW << "\n   Bye 🖐️\n\n" << RESET;
                 break;
             default:
