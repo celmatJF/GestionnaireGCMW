@@ -2,4 +2,4 @@
 #include "struct.hpp"
 using namespace std;
 
-void AddStudent(eleve tab[30]);
+void liste(eleve tab[30]);

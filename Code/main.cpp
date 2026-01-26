@@ -1,19 +1,16 @@
 #include <iostream>
 #include <windows.h>
-#include "fonctions.h"
-#include "AddStudent.h"
 #include <clocale>
-#include "colors.h"
+#include "AddStudent.h"
+#include "liste.h"
+#include "moyenne.h"
+#include "searchElv.h"
+#include "Best.h"
+#include "struct.hpp"
 using namespace std;
 
-int main()
-{
-    SetConsoleCP(CP_UTF8);          
-    setlocale(LC_ALL, ".UTF8");
-    SetConsoleOutputCP(CP_UTF8);
-    string tabElv[30] = {"Élie","Emma","Léa","Hugo","Célian","Thomas","Manon","Louis","Camille","Noah","Chloé","Enzo","Sarah"
-                         "Paul","Inès","Arthur","Zoé","Adam","Juliette","Maxime","Lina"};
-    float tabNote[30] = {12, 15, 8, 17.3, 10, 17.11, 6, 18, 9, 16, 11, 13, 7, 19, 5, 20, 4, 18.5, 9.5, 14.5};
+
+struct Variables{
     char choix;
     bool exit = false;
     float res;
@@ -21,9 +18,25 @@ int main()
     int index;
     float Best;
     float note;
+};
+
+int main()
+{
+    SetConsoleCP(CP_UTF8);          
+    setlocale(LC_ALL, ".UTF8");
+    SetConsoleOutputCP(CP_UTF8);
+    
+    eleve tab[30];
+    // Initialiser le tableau avec des valeurs vides
+    for(int i = 0; i < 30; i++) {
+        tab[i].nom = "";
+        tab[i].note = 0.0f;
+    }
+    
+    Variables v;
     
     cout << GREEN << "Bienvenu sur votre gestionaire de classe 👽" << RESET;
-    while(exit == false){
+    while(v.exit == false){
         cout << GREEN << "\n\nQuelle opération souhaitez-vous réaliser ?\n\n" << RESET;
         cout << LIGHTBLUE  << ".1 Ajouter un Étudiant\n";
         cout <<".2 Afficher la liste complète des éleves\n";
@@ -35,7 +48,7 @@ int main()
         cin >> v.choix;
         switch(v.choix){
             case '1':
-                //AddStudent(tab);
+                AddStudent(tab);
                 break;
             case '2':
                 liste(tab);

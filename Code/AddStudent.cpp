@@ -2,9 +2,7 @@
 #include <windows.h>
 #include <clocale>
 #include "AddStudent.h"
-#include "colors.h"
 #include <string>
-#include <fstream>
 #include "struct.hpp"
 using namespace std;
 
