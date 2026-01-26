@@ -1,29 +1,26 @@
 #include <iostream>
 #include <windows.h>
 #include "fonctions.h"
+#include "AddStudent.h"
 #include <clocale>
 #include "colors.h"
 using namespace std;
-
-
-struct variable{
-    char choix;
-    bool exit = false;
-    float res;
-    int index;
-    float Best;
-    string nom;
-    float note;
-};
 
 int main()
 {
     SetConsoleCP(CP_UTF8);          
     setlocale(LC_ALL, ".UTF8");
     SetConsoleOutputCP(CP_UTF8);
-    eleve tab[30];
-    
-    variable v;
+    string tabElv[30] = {"Élie","Emma","Léa","Hugo","Célian","Thomas","Manon","Louis","Camille","Noah","Chloé","Enzo","Sarah"
+                         "Paul","Inès","Arthur","Zoé","Adam","Juliette","Maxime","Lina"};
+    float tabNote[30] = {12, 15, 8, 17.3, 10, 17.11, 6, 18, 9, 16, 11, 13, 7, 19, 5, 20, 4, 18.5, 9.5, 14.5};
+    char choix;
+    bool exit = false;
+    float res;
+    string nom;
+    int index;
+    float Best;
+    float note;
     
     cout << GREEN << "Bienvenu sur votre gestionaire de classe 👽" << RESET;
     while(exit == false){

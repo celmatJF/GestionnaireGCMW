@@ -22,8 +22,10 @@ void liste(eleve tab[30])
         if(tab[i + 1].nom == ""){
         }else{
             cout << ", ";
+            nb++;
         }
-        if(j == 5){
+        if(j == 5)
+        {
             cout << endl;
             j = 0;
         }
