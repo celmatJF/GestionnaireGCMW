@@ -21,7 +21,10 @@ void ExportFile(eleve tab[30])
         AccesFichier << "Nom,Note" << endl;
         for(int i = 0; i < 30; i++)
         {
-            AccesFichier << tab[i].nom << ',' << tab[i].note << endl; 
+            if(tab[i].nom != "")
+            {
+                AccesFichier << tab[i].nom << ',' << tab[i].note << endl; 
+            }
         }
         cout << BLUE << "Le fichier a été exporter avec succès" << endl;
     } 
