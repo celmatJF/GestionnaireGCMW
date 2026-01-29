@@ -12,6 +12,7 @@ void AddStudent(eleve tab[30])
     chaine de cractères tabElv(tableau de 30 indices).
     Sortie : cout */
     int index;
+    float note;
     for(int i(0); i < 30; i++)
     {    
         if(tab[i].nom == "")
@@ -29,7 +30,19 @@ void AddStudent(eleve tab[30])
             return;
         }
     }
-    cout << BLUE << "Entrez sa note : " << RED;
-    cin >> tab[index].note;
+    do 
+    {
+        cout << BLUE << "Entrez sa note : " << RED;
+        cin >> note;
+        if(note > 20 || note < 0)
+        {
+            cout << "Cette note n'est pas valide !" << endl;
+        }
+        else
+        {
+            tab[index].note = note;
+        }
+    } while (note > 20 || note < 0);
+
     cout << RESET;
 }
