@@ -7,6 +7,7 @@
 #include "searchElv.h"
 #include "Best.h"
 #include "struct.hpp"
+#include "ExportFile.h"
 using namespace std;
 
 
@@ -33,7 +34,8 @@ int main()
         cout <<".3 Afficher la moyenne de la classe\n";
         cout <<".4 Chercher un éleve par son nom ou son numéro\n";
         cout <<".5 Afficher la meilleure note\n";
-        cout <<".6 Quitter\n" << RESET;
+        cout <<".6 Exporter la list en fichier .csv (Tableur)\n";
+        cout <<".7 Quitter\n" << RESET;
 
         cin >> v.choix;
         switch(v.choix){
@@ -79,6 +81,9 @@ int main()
                 cout << BLUE << "\nLa meilleure note c'est " << RED << v.Best << BLUE << "/20\n" << RESET;
                 break;
             case '6':
+                ExportFile(tab);
+                break;
+            case '7':
                 v.exit = true;
                 cout << YELLOW << "\n   Bye 🖐️\n\n" << RESET;
                 break;
