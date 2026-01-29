@@ -8,6 +8,7 @@
 #include "Best.h"
 #include "struct.hpp"
 #include "ExportFile.h"
+#include <iomanip>
 using namespace std;
 
 
@@ -47,7 +48,7 @@ int main()
                 break;
             case '3':
                 v.res = moyenne(tab);
-                cout << BLUE << "\nLa moyenne de la classe est à " << RED << v.res << BLUE << "/20 \n\n" << RESET;
+                cout << fixed << setprecision(2) << BLUE << "\nLa moyenne de la classe est à " << RED << v.res << BLUE << "/20 \n\n" << RESET;
                 break;
             case '4':
                 v.nom = "";
