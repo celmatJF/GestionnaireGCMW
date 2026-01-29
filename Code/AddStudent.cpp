@@ -23,6 +23,11 @@ void AddStudent(eleve tab[30])
             index = i;
             break;
         }
+        else if(i == 29 && tab[i].nom != "")
+        {
+            cout << RED << "\nLe tableau est plein, impossible d'ajouter un éleve.\n" << RESET;
+            return;
+        }
     }
     cout << BLUE << "Entrez sa note : " << RED;
     cin >> tab[index].note;

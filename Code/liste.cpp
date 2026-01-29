@@ -15,19 +15,19 @@ void liste(eleve tab[30])
     int j = 0;
     for(int i = 0; i < 30; i++)
     {
-        cout << tab[i].nom;
-        nb++;
-        if(tab[i + 1].nom == ""){
-        }else{
-            cout << ", ";
+
+        if(tab[i].nom != ""){
+            cout << tab[i].nom << ", ";
             nb++;
+            j++;
+        }else{
         }
         if(j == 5)
         {
             cout << endl;
             j = 0;
         }
-        j++;
+        
     }
     cout << "\nIl y a " << RED << nb << BLUE << " élèves dans la classe !"<< RESET;
 }

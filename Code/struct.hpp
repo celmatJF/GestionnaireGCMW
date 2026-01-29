@@ -8,6 +8,16 @@ struct eleve
     float note;
 };
 
+struct Variables{
+    char choix;
+    bool exit = false;
+    float res;
+    string nom;
+    int index;
+    float Best;
+    float note;
+};
+
 inline constexpr const char* RED = "\033[31m";
 inline constexpr const char* GREEN = "\033[32m";
 inline constexpr const char* YELLOW = "\033[33m";

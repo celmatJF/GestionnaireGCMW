@@ -10,16 +10,6 @@
 using namespace std;
 
 
-struct Variables{
-    char choix;
-    bool exit = false;
-    float res;
-    string nom;
-    int index;
-    float Best;
-    float note;
-};
-
 int main()
 {
     SetConsoleCP(CP_UTF8);          
