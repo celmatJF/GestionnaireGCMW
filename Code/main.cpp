@@ -1,3 +1,9 @@
+/*
+  Programme : gestoinaire d'élève
+  Auteur    : Célian William Gabriel Matthieu 
+  Date      : 02/02/2026
+  Objet     : gestoinaire 
+*/
 #include <iostream>
 #include <windows.h>
 #include <clocale>
