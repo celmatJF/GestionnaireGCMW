@@ -44,14 +44,15 @@ int main()
         tab[i].nom = "";
         tab[i].note = 0.0f;
     }
-    string pretab[22] = {"goku", "vegeta", "gohan", "trunks", "piccolo", "krillin", "ten shin han", "yamcha", "chaozu", "bulma",
-                 "chi chi", "majin boo", "kid buu", "beerus", "whis", "broly", "kefla",
+    string pretab[22] = {"goku", "vegeta", "gohan", "trunks", "piccolo", "krillin", "ten", "yamcha", "chaozu", "bulma",
+                 "chi", "boo", "buu", "beerus", "whis", "broly", "kefla",
                  "c-16", "c-17", "c-18", "c-19", "c-20"};
     
     
     //----------------------- Boucle principale du programme------------------------
 
-    cout << GREEN << "Bienvenu sur votre gestionaire de classe 👽" << RESET;
+    // fixed et setprecision(2) pour afficher la moyenne avec 2 décimales
+    cout << fixed << setprecision(2) << GREEN << "Bienvenu sur votre gestionaire de classe 👽" << RESET;
     while(sortie == false){ // Boucle principale jusqu'à ce que exit soit vrai
         // Affichage du menu
         cout << GREEN << "\n\nQuelle opération souhaitez-vous réaliser ?\n\n" << RESET;
@@ -73,8 +74,8 @@ int main()
                 break;
             case '3':
                 res = moyenne(tab); // Appel de la fonction pour calculer la moyenne
-                cout << fixed << setprecision(2) << BLUE << "\nLa moyenne de la classe est à " << RED << res << BLUE << "/20 \n\n" << RESET;
-                // fixed et setprecision(2) pour afficher la moyenne avec 3 décimales
+                cout << BLUE << "\nLa moyenne de la classe est à " << RED << res << BLUE << "/20 \n\n" << RESET;
+                
                 break;
             case '4':
             // Recherche d'un élève par nom ou numéro
@@ -118,7 +119,7 @@ int main()
             case 'p':
                 for(int i = 0; i < 22; i++) {
                     tab[i].nom = pretab[i];
-                    tab[i].note = rand() % 21; // Note aléatoire entre 0 et 20
+                    tab[i].note = static_cast<float>(rand() % 2001) / 100.00f;
                 }
                 break;
             default:

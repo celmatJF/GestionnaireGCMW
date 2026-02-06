@@ -12,16 +12,17 @@ void liste(eleve tab[30])
     Entrée : Chaine de caractères tabElv(tableau de 30 indices).
     Sortie : Eleves et nombre d'eleves par cout */
 
-    cout << BLUE << endl; // Couleur bleu pour l'affichage
+    cout << BLUE << endl;
     int nb = 0; // Compteur d'élèves
     int j = 0; // Compteur pour le saut de ligne
     for(int i = 0; i < 30; i++)
     {
 
         if(tab[i].nom != ""){ // Si l'indice n'est pas vide
-            cout << tab[i].nom << ", "; // Affiche le nom de l'élève
+            cout << "|" << tab[i].nom << " " << RED << tab[i].note << BLUE << "|, "; // Affiche le nom de l'élève
             nb++; // Incrémente le compteur d'élèves
             j++; // Incrémente le compteur pour le saut de ligne
+
         }else{
         }
         if(j == 5) // Après 5 élèves, faire un saut de ligne
