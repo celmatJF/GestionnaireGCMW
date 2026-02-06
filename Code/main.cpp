@@ -118,8 +118,6 @@ int main()
             case 'p':
                 for(int i = 0; i < 22; i++) {
                     tab[i].nom = pretab[i];
-                }
-                for(int i = 0; i < 22; i++) {
                     tab[i].note = rand() % 21; // Note aléatoire entre 0 et 20
                 }
                 break;
